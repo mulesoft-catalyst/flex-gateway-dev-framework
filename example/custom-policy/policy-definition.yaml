@@ -1,0 +1,9 @@
+#%Policy Definition 0.1
+name: Dummy Policy
+description: Dummy Policy
+category: Transformation
+providedCharacteristics: []
+requiredCharacteristics: []
+interfaceScope: ["api", "resource"]
+encryptionSupported: true
+interfaceTransformation: []

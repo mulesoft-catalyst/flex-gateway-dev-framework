@@ -1,0 +1,11 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: PolicyBinding
+metadata:
+  name: dummy-policy
+spec:
+  targetRef:
+    name: httpbin-example
+  policyRef:
+    name: dummy-policy-implementation
+  config:
+    header: testheader2

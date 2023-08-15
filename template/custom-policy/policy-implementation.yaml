@@ -1,0 +1,6 @@
+#%Policy Implementation 1.0
+name: {{ policyName }}-implementation
+technology: flexGateway
+minRuntimeVersion: 1.0.0
+releaseNotes: |
+  * Sets a header

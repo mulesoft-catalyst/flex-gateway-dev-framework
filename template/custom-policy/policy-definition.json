@@ -1,0 +1,16 @@
+{
+  "title": "{{ descriptivePolicyName }}",
+  "type": "object",
+  "description": "{{ descriptivePolicyName }}",
+  "properties": {
+    "header": {
+      "title": "Header",
+      "type": "string",
+      "description": ""
+    }
+  },
+  "required": ["header"],
+  "unevaluatedProperties": true,
+  "$id": "setQueryArg",
+  "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

@@ -2,7 +2,7 @@
 
 This repository contains a template to create a complete Custom Policy ready to be deployed on Flex Gateway.
 
-This template contains a set a Docker image to spin up a local Flex Gateway that containes the Custom Policy.
+This template contains a Docker image to spin up a local Flex Gateway that deploys the Custom Policy.
 
 ## Features
 

@@ -7,9 +7,9 @@ This template contains a Docker image to spin up a local Flex Gateway that deplo
 ## Features
 
 - **Remove Rust dependencies**: The custom policy code build and packaging is delegated to a Docker container with the required dependencies
-- **Generate code from template**: The custom script provided create a custom policy project, ready to published on Exchange
+- **Generate code from template**: The custom script provided creates a custom policy project, ready to be published on Exchange
 - **Run locally**: A Docker Compose configuration packages the policy, initializes a local Flex Gateway, and deploys the policy
-- **Register automatically**: The Docker image provided registers the Flex Gateway against the Anypoint Platform in Local mode when is created. It removes the manual Registration step from the Flex Gateway setup
+- **Register automatically**: The Docker image provided registers the Flex Gateway with the Anypoint Platform in Local mode when is created. It removes the manual Registration step from the Flex Gateway setup
 - **PoC ready**: The provided Flex Gateway Docker image contains an API instance. The Docker compose environment spins up an HTTP Bin server to simplify testing the custom policy with a real API
 
 ### Benefits
@@ -122,7 +122,7 @@ For more information: [Overview of Docker Compose](https://docs.docker.com/compo
 These components are described in the *example/docker-compose.yaml* file:
 - **Rustbox**: A Docker image to compile Rust code that contains Rust, Rustup, and Cargo. The required Cargo libraries are already cached in this image.
 - **HTTP Bin**: Creates a local instance of the HTTP Bin service, useful to test API Proxies [HTTP Bin](https://httpbin.org/). The HTTP Bin service is inside the same Docker network than the Flex GW service so it's exposed under the *httpbin* domain.
-- **Flex Gateway**: A modified version of the Flex Gateway Docker image. This image executes an script to register against the Anypoint Platform when the container is created, and imports the Flex GW descriptor files to configure an offline API Instance and a Policy which is applied to this instance.
+- **Flex Gateway**: A modified version of the Flex Gateway Docker image. This image executes a script to register with the Anypoint Platform when the container is created and imports the Flex GW descriptor files to configure an offline API Instance and a Policy that is applied to this instance.
 
 ## Example
 

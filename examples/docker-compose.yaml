@@ -23,7 +23,7 @@ services:
     networks:
       - flex-gateway-network
   flex-gateway:
-    image: flex-gateway-local-test-policy
+    image: flex-gateway-local
     build: ./flex-gateway
     depends_on:
       rustbox:
@@ -32,7 +32,7 @@ services:
         condition: service_started
     hostname: flex-gateway
     ports:
-      - "8080:8080"
+      - "8083:8080"
     volumes:
       - ./custom-policy/target/extension-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/extension-policy.yaml
       - ./flex-gateway/api-instance-http-bin.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/api-instance-http-bin.yaml

@@ -1,9 +1,0 @@
-#%Policy Definition 0.1
-name: Test Policy
-description: Test Policy
-category: Transformation
-providedCharacteristics: []
-requiredCharacteristics: []
-interfaceScope: ["api", "resource"]
-encryptionSupported: true
-interfaceTransformation: []

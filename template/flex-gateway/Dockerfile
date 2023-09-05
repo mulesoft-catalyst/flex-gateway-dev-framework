@@ -1,5 +1,5 @@
 # Use the original image as a base
-FROM mulesoft/flex-gateway
+FROM mulesoft/flex-gateway:1.5.1
 
 # Copy the configuration file and script into the image
 COPY config.properties /config.properties

@@ -10,7 +10,7 @@ destination_path = "project"
 config_file = open(config_file_path, 'r')
 config = json.load(config_file)
 
-current_dir = os.getcwd()
+current_dir = os.getcwd().replace("\\","/")
 env = jinja2.Environment(loader=jinja2.FileSystemLoader(current_dir))
 
 # Iterate over each file in template directory
@@ -18,16 +18,16 @@ for root, dirs, files in os.walk(template_path):
     for file in files:
         
         # Render template
-        file_relative_path = os.path.join(root,file)
+        file_relative_path = os.path.join(root,file).replace("\\","/")
         print("File: " + file_relative_path)
         
         # Determine output path
-        relative_path = os.path.relpath(root, template_path)
+        relative_path = os.path.relpath(root, template_path).replace("\\","/")
         print("Relative path: " + relative_path)
-        output_path = os.path.join(destination_path, relative_path)
+        output_path = os.path.join(destination_path, relative_path).replace("\\","/")
         print("Output path: " + output_path)
         os.makedirs(output_path, exist_ok=True)
-        output_file_path = os.path.join(output_path, file)
+        output_file_path = os.path.join(output_path, file).replace("\\","/")
         
         if file.endswith(('.yaml', '.json', '.toml', '.properties', 'Dockerfile')):
             print("Template file: " + file_relative_path + " to " + output_file_path)

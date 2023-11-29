@@ -33,6 +33,10 @@ This template contains a Docker image to spin up a local Flex Gateway that deplo
 ```
 $ python3 -m pip install --user jinja2
 ```
+- Create the Rustbox image
+```
+$ docker build -t rustbox:1.0 rustbox/.
+```
 - Update the *template-input.json* file
 ```
 {
@@ -53,7 +57,7 @@ $ python3 create-project.py
 - Under the *project* folder, run Docker Compose
 ```
 $ cd project
-$ docker-compose up --force-recreate
+$ docker-compose --env-file configuration.env up
 ```
 - When Docker compose starts, verify that the custom policy has been compilation run successfully in the *rustbox* image
 ```
@@ -71,7 +75,7 @@ project_rustbox_1 exited with code 0
 ```
 - Once the httpbin and flex-gateway containers started, on a different terminal, call the API Instance deployed to the Flex GW
 ```
-$ curl http://localhost:8080/api/httpbin/anything -v
+$ curl http://localhost:8080/httpbin/anything -v
 *   Trying 127.0.0.1:8080...
 * Connected to localhost (127.0.0.1) port 8080 (#0)
 > GET /api/httpbin/anything HTTP/1.1
@@ -126,7 +130,7 @@ These components are described in the *example/docker-compose.yaml* file:
 
 ## Example
 
-The project located under the *example* directory is a demonstration of a project created using this template. To run the example, go to the terminal under this directory and run **docker-compose up --force-recreate**
+The project located under the *example* directory is a demonstration of a project created using this template. To run the example, go to the terminal under this directory and run **docker-compose up**
 
 **Note**: Before running the Flex GW instance, update the Anypoint Platform properties under *example/flex-gateway/config.properties*. The Flex GW needs to connect to the Anypoint Platform even in local mode.
 

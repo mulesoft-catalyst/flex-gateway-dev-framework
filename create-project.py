@@ -29,7 +29,7 @@ for root, dirs, files in os.walk(template_path):
         os.makedirs(output_path, exist_ok=True)
         output_file_path = os.path.join(output_path, file).replace("\\","/")
         
-        if file.endswith(('.yaml', '.json', '.toml', '.properties', 'Dockerfile')):
+        if file.endswith(('.yaml', '.env', '.json', '.toml', '.properties', 'Dockerfile')):
             print("Template file: " + file_relative_path + " to " + output_file_path)
             template = env.get_template(file_relative_path)
             rendered_content = template.render(config)

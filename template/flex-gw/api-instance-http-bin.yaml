@@ -3,7 +3,7 @@ kind: ApiInstance
 metadata:
   name: httpbin-example
 spec:
-  address: http://0.0.0.0:8080/api/httpbin/
+  address: http://0.0.0.0:8081/httpbin/
   services:
     upstream:
       address: http://httpbin

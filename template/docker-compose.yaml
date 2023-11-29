@@ -1,7 +1,6 @@
 services:
   rustbox:
-    image: rustbox
-    build: ./rustbox
+    image: rustbox:1.0
     volumes:
       - ./custom-policy:/usr/src/myapp
     working_dir: /usr/src/myapp
@@ -22,21 +21,34 @@ services:
       - "80:80"
     networks:
       - flex-gateway-network
+  flex-gateway-registration:
+    image: mulesoft/flex-gateway
+    volumes:
+      - ./flex-gw:/registration
+    networks:
+      - flex-gateway-network
+    command:
+      - /bin/sh
+      -  -c
+      - |
+        if [ ! -f /registration/registration.yaml ]; then flexctl registration create --client-id=$CLIENT_ID --client-secret=$CLIENT_SECRET --environment=$ENV_ID --organization=$ORG_ID --output-directory=/registration $FLEX_GW_NAME; fi
   flex-gateway:
-    image: flex-gateway-local-{{ policyName }}
-    build: ./flex-gateway
+    image: mulesoft/flex-gateway
     depends_on:
       rustbox:
         condition: service_completed_successfully
       httpbin:
         condition: service_started
+      flex-gateway-registration:
+        condition: service_completed_successfully
     hostname: flex-gateway
     ports:
-      - "8080:8080"
+      - "8081:8081"
     volumes:
+      - ./flex-gw/registration.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/registration.yaml
       - ./custom-policy/target/extension-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/extension-policy.yaml
-      - ./flex-gateway/api-instance-http-bin.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/api-instance-http-bin.yaml
-      - ./flex-gateway/policy-binding-http-bin-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/policy-binding-http-bin-policy.yaml
+      - ./flex-gw/api-instance-http-bin.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/api-instance-http-bin.yaml
+      - ./flex-gw/policy-binding-http-bin-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/policy-binding-http-bin-policy.yaml
     networks:
       - flex-gateway-network
 networks:

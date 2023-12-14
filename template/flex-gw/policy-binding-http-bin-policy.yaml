@@ -1,11 +1,11 @@
 apiVersion: gateway.mulesoft.com/v1alpha1
 kind: PolicyBinding
 metadata:
-  name: test-policy-latam
+  name: {{ policyName }}
 spec:
   targetRef:
     name: httpbin-example
   policyRef:
-    name: test-policy-latam-implementation
+    name: {{ policyName }}-implementation
   config:
     header: testheader

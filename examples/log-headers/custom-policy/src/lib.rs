@@ -66,10 +66,40 @@ struct CustomHttpContext {
 
 impl Context for CustomHttpContext {}
 
+impl CustomHttpContext {
+    fn log_attribute(&mut self, context: &str, attribute: &str) {
+        let property_path = vec![context, attribute];
+        match self.get_property(property_path) {
+            None => debug!("No {} {}", context, attribute),
+            Some(property) => {
+                let property_string = String::from_utf8(property);
+                debug!("{}.{} {:?}", context, attribute, property_string.unwrap());
+            },
+        }
+    }
+}
+
 impl HttpContext for CustomHttpContext {
 
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         debug!("on_http_request_headers");
+        for (name, value) in &self.get_http_request_headers() {
+            debug!("#{} <- {}: {}", self.context_id, name, value);
+        }
+        
+        self.log_attribute("source", "address");
+        self.log_attribute("connection", "id");
+        self.log_attribute("connection", "tls_version");
+        self.log_attribute("connection", "requested_server_name");
+        self.log_attribute("connection", "subject_local_certificate");
+        self.log_attribute("connection", "subject_peer_certificate");
+        self.log_attribute("connection", "dns_san_local_certificate");
+        self.log_attribute("connection", "dns_san_peer_certificate");
+        self.log_attribute("connection", "uri_san_local_certificate");
+        self.log_attribute("connection", "uri_san_peer_certificate");
+        self.log_attribute("connection", "sha256_peer_certificate_digest");
+        self.log_attribute("connection", "transport_failure_reason");
+
         debug!("Config header: {}", self.config.header.clone().unwrap_or("No string here".to_string()));
         self.set_http_request_header("aHeader", Some("aValue"));
 

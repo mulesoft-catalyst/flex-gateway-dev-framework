@@ -1,0 +1,6 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Service
+metadata:
+  name: echoserver
+spec:
+  address: http://echoserver

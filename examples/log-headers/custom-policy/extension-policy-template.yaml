@@ -1,0 +1,20 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  name: log-headers-policy-implementation
+spec:
+  extends:
+    - name: extension-authentication
+    - name: envoy-filter
+    - name: proxy-wasm-filter
+  properties:
+    rootId:
+      type: string
+      default: main
+    config:
+      header:
+        type: string
+        default: test
+    implementation:
+      type: string
+      default: base64://

@@ -1,0 +1,9 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: ApiInstance
+metadata:
+  name: httpbin-tls-example
+spec:
+  address: https://0.0.0.0:8082/httpbin/
+  services:
+    upstream:
+      address: http://httpbin

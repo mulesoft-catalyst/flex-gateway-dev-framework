@@ -1,0 +1,11 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: PolicyBinding
+metadata:
+  name: {{ policyName }}-tls
+spec:
+  targetRef:
+    name: httpbin-tls-example
+  policyRef:
+    name: {{ policyName }}-implementation
+  config:
+    header: testheader

@@ -1,8 +1,8 @@
 {
-    "orgId": "66c44113-86fb-4e48-8d5a-e9dc61ad0469",
-    "envId": "8c35608e-3b8f-4932-959a-2a00db6dfbf6",
-    "clientId": "bdcdff46e6df41eebb1b29979f0a3054",
-    "clientSecret": "17e4ef4dd1ab439784e0BfA94C276a41",
-    "policyName": "test-policy-latam",
-    "descriptivePolicyName": "Test Policy Latam"
+    "orgId": "ORG ID",
+    "envId": "ENV ID",
+    "clientId": "CLIENT ID",
+    "clientSecret": "CLIENT SECRET",
+    "policyName": "custom-policy",
+    "descriptivePolicyName": "Custom Policy"
 }

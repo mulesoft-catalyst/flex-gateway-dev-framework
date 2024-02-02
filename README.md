@@ -75,7 +75,7 @@ project_rustbox_1 exited with code 0
 ```
 - Once the httpbin and flex-gateway containers started, on a different terminal, call the API Instance deployed to the Flex GW
 ```
-$ curl http://localhost:8080/httpbin/anything -v
+$ curl http://localhost:8081/httpbin/anything -v
 *   Trying 127.0.0.1:8080...
 * Connected to localhost (127.0.0.1) port 8080 (#0)
 > GET /api/httpbin/anything HTTP/1.1
@@ -114,6 +114,10 @@ $ curl http://localhost:8080/httpbin/anything -v
 * Connection #0 to host localhost left intact
 ```
 - The template custom policy sets a header with the name **Aheader** before sending the request to HTTP Bin. Verify that the header has been returned.
+- An API with mTLS enabled is also created, listening on the port 8082
+```
+$ curl https://localhost:8082/httpbin/anything -v --cacert certs/ca.crt --cert certs/client.crt --key certs/client.key
+```
 
 **Note**: The Flex GW instance contains an API Instance listening on **/api/httpbin/anything**, the requests are forwarded to the HTTP Bin instance running on Docker.
 

@@ -1,0 +1,102 @@
+{
+    "title": "ServiceCallout",
+    "type": "object",
+    "description": "The ServiceCallout policy lets you call another service from your API proxy flow.",
+    "properties": {
+        "url": {
+            "title": "External Request URL",
+            "type": "string",
+            "description": "The URL of the external service to call."
+        },
+        "service_name": {
+            "title": "Service name in Service.yaml",
+            "type": "string",
+            "description": "The name of the external service to call, as defined in Service.yaml."
+        },
+        "headers": {
+            "title": "External Request Headers",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "header_name": {
+                        "title": "Header Name",
+                        "type": "string"
+                    },
+                    "header_value": {
+                        "title": "Header Value",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "header_name",
+                    "header_value"
+                ]
+            },
+            "description": "HTTP headers to include in the external request."
+        },
+        "request_type": {
+            "title": "External HTTP Request Type",
+            "type": "string",
+            "enum": [
+                "GET",
+                "POST"
+            ],
+            "description": "The HTTP method to use for the external request."
+        },
+        "request_content_type": {
+            "title": "External Request Content Type",
+            "type": "string",
+            "description": "The content type of the request body. eg. application/json"
+        },
+        "request_body": {
+            "title": "External Request Body",
+            "type": "string",
+            "description": "The payload for the request body."
+        },
+        "time_out": {
+            "title": "Timeout for External Request",
+            "type": "integer",
+            "default": 10,
+            "description": "The maximum duration (in seconds) for the external service call."
+        },
+        "parameters": {
+            "title": "Parameters to be added in API Response Headers",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "parameter_name": {
+                        "title": "Parameter Name to be added in API Response Headers",
+                        "type": "string",
+                        "description": "The name of the header to add in the API response."
+                    },
+                    "response_path": {
+                        "title": "JSONPath in External Response",
+                        "type": "string",
+                        "description": "The JSONPath expression to extract values from the external response."
+                    }
+                },
+                "required": [
+                    "parameter_name",
+                    "response_path"
+                ]
+            },
+            "description": "Parameters to extract from the external response and include in API response headers."
+        }
+    },
+    "required": [
+        "url",
+        "service_name",
+        "request_type",
+        "time_out"
+    ],
+    "unevaluatedProperties": false,
+    "@context": {
+        "@vocab": "anypoint://vocabulary/policy.yaml#",
+        "security": "anypoint://vocabulary/policy.yaml#",
+        "config": "anypoint://vocabulary/policyConfigurationsForUI.yaml#"
+    },
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "service-callout-policy"
+}

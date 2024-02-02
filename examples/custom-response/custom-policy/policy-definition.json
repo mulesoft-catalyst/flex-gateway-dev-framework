@@ -1,0 +1,16 @@
+{
+  "title": "Custom Response Policy",
+  "type": "object",
+  "description": "Custom Response Policy",
+  "properties": {
+    "header": {
+      "title": "Header",
+      "type": "string",
+      "description": ""
+    }
+  },
+  "required": ["header"],
+  "unevaluatedProperties": true,
+  "$id": "setQueryArg",
+  "$schema": "https://json-schema.org/draft/2019-09/schema"
+}

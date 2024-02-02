@@ -1,0 +1,11 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: PolicyBinding
+metadata:
+  name: custom-response-policy
+spec:
+  targetRef:
+    name: httpbin-example
+  policyRef:
+    name: custom-response-policy-implementation
+  config:
+    header: testheader

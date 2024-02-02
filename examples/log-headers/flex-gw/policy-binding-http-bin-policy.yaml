@@ -1,0 +1,11 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: PolicyBinding
+metadata:
+  name: log-headers-policy
+spec:
+  targetRef:
+    name: httpbin-example
+  policyRef:
+    name: log-headers-policy-implementation
+  config:
+    header: testheader

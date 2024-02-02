@@ -44,15 +44,11 @@ services:
     hostname: flex-gateway
     ports:
       - "8081:8081"
-      - "8082:8082"
     volumes:
       - ./flex-gw/registration.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/registration.yaml
       - ./custom-policy/target/extension-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/extension-policy.yaml
       - ./flex-gw/api-instance-http-bin.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/api-instance-http-bin.yaml
       - ./flex-gw/policy-binding-http-bin-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/policy-binding-http-bin-policy.yaml
-      - ./flex-gw/api-instance-http-bin-tls.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/api-instance-http-bin-tls.yaml
-      - ./flex-gw/policy-binding-tls-context-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/policy-binding-tls-context-policy.yaml
-      - ./flex-gw/policy-binding-http-bin-tls-policy.yaml:/usr/local/share/mulesoft/flex-gateway/conf.d/policy-binding-http-bin-tls-policy.yaml
     networks:
       - flex-gateway-network
 networks:

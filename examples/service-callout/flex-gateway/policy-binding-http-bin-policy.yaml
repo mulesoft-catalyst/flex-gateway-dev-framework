@@ -1,0 +1,14 @@
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: PolicyBinding
+metadata:
+  name: dummy-policy
+spec:
+  targetRef:
+    name: httpbin-example
+  policyRef:
+    name: dummy-policy-implementation
+  config:
+    url: http://echoserver
+    service_name: echoserver
+    request_type: GET
+    time_out: 10

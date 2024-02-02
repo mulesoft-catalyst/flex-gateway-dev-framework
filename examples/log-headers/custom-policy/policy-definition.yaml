@@ -1,0 +1,9 @@
+#%Policy Definition 0.1
+name: Log Headers Policy
+description: Log Headers Policy
+category: Transformation
+providedCharacteristics: []
+requiredCharacteristics: []
+interfaceScope: ["api", "resource"]
+encryptionSupported: true
+interfaceTransformation: []
